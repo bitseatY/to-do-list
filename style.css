@@ -1,0 +1,119 @@
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins','sans-serif';
+    border: none;
+    outline: none;
+}
+html{
+    font-size: 62.5%;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background:linear-gradient(135deg,rgb(189, 111, 189),rgb(78, 78, 196));
+    padding:8rem 0  0  40rem;
+}
+.container .box{
+    width: 100%;
+    max-width:54rem;
+    
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    
+}
+
+.container .box h2{
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    
+}
+
+.container .box img{
+    width:5rem;
+    aspect-ratio: 1;
+}
+.container .box .input-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:2rem 0;
+    border-radius: 3rem;
+    background-color: rgb(192, 186, 178);
+    padding-left: 2rem;
+    
+    
+}
+.container .box .input-box input{
+    background-color: transparent;
+    font-weight: 1.4rem;
+    font-size: 2rem;
+    
+}
+.container .box .input-box button{
+    height: 100%;
+    width:15rem;
+    background-color: rgb(231, 89, 37);
+    color: white;
+    border-radius: 3rem;
+    font-size: 2rem;
+    padding:1.5rem 2rem;
+    cursor: pointer;
+}
+.container .box .task-list{
+    list-style: none;
+}
+.container .box .task-list li{
+    padding-left: 3rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+    position: relative;
+    user-select: none;
+    cursor: pointer;;
+}
+.container .box .task-list li::before{
+    content:'';
+    display: block;
+    position: absolute;
+    top:0; left:0;
+    width: 2rem;
+    height: 2rem;
+    border:0.02rem solid black;
+    border-radius: 50%;
+    background-image: url(images/unchecked.png);
+    background-position: center;
+    background-size: cover;
+    
+}
+.container .box .task-list li span{
+    
+    display: block;
+    position: absolute;
+    top:0rem; right:0;
+    border:.002rem solid gray;
+    width:2rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+.container .box .task-list li.checked{
+
+     text-decoration: line-through;
+}
+.container .box .task-list li.checked::before{
+    background-image: url(images/checked.png);
+}
