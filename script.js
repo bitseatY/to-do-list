@@ -13,6 +13,7 @@ function addTask(){
         span.innerHTML="\u00d7";
         newTask.appendChild(span);
         taskBox.value='';
+        saveData();
         
     }
 
@@ -27,3 +28,12 @@ taskContainer.addEventListener("click",function(e){
     }
 
 } , false);
+
+
+function saveData(){
+    localStorage.setItem("data",taskContainer.innerHTML);
+}
+function showTask(){
+    taskContainer.innerHTML=localStorage.getItem("data");
+}
+showTask();
