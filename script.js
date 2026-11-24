@@ -1,39 +1,61 @@
-const taskBox=document.getElementById('add-task-box');
-const  taskContainer=document.querySelector('.task-list');
+const addBtn=document.getElementById("add-btn");
+const  newTask=document.getElementById("new-task");
+const taskContainer=document.getElementById("task-container");
+const completedContainer=document.getElementById("completed-container");
+addBtn.addEventListener("click",addTask);
+
+
+
+
+
 
 function addTask(){
-    if(taskBox.value==''){
-        alert('you must write the task first');
-    }
-    else{
-        let newTask=document.createElement('li');
-        newTask.innerHTML=taskBox.value;
-        taskContainer.appendChild(newTask);
-        let span=document.createElement('span');
-        span.innerHTML="\u00d7";
-        newTask.appendChild(span);
-        taskBox.value='';
-        saveData();
+    
+    
+   if(newTask.value.trim()===""){
+     alert("write the task first");
+   }
+   else{
+       let task=document.createElement("div");
+       let taskText=document.createElement("span")
+       let checkBox=document.createElement("span");
+       taskText.textContent=newTask.value;
+       task.appendChild(checkBox,taskText);
+       taskContainer.appendChild(task);
+       
+       
         
+       checkBox.classList.add("checkbox");
+      
+
+       checkBox.addEventListener("click",()=>{
+          if(taskContainer.contains(task)){
+              moveToCompleted(task);
+          }
+          else{
+            moveToUncompleted(task);
+          }
+           checkBox.classList.toggle("checked")
+       });
+
+
+
+        newTask.value="";
     }
+    
+   
 
 }
 
-taskContainer.addEventListener("click",function(e){
-    if(e.target.tagName==='LI'){
-        e.target.classList.toggle("checked");
-    }
-    else if(e.target.tagName==='SPAN'){
-        e.target.parentElement.remove();
-    }
+function moveToCompleted(task){
+   task.remove();
+   completedContainer.appendChild(task);
+   
 
-} , false);
-
-
-function saveData(){
-    localStorage.setItem("data",taskContainer.innerHTML);
 }
-function showTask(){
-    taskContainer.innerHTML=localStorage.getItem("data");
+function moveToUncompleted(task){
+     task.remove();
+     taskContainer.appendChild(task);
 }
-showTask();
+
+ 
